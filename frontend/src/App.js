@@ -21,7 +21,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<header>Employee Directory</header>
+			<h1>Employee Directory</h1>
 			<EmployeeList employees={employees}></EmployeeList>
 		</div>
 	);
