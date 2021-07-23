@@ -2,18 +2,27 @@ import React from 'react'
 
 function Search({ searchParams, setSearchParams }) {
 
+    const searchField = (placeholder, fieldName) => {
+        return (
+            <input type="text" value={searchParams[fieldName]} 
+                placeholder={placeholder} 
+                onChange={e => {
+                    const temp = { ...searchParams }
+                    temp[fieldName] = e.target.value
+                    setSearchParams(temp)
+                }}/>
+        )
+    }
+
     return (
         <div>
             <h5>Search</h5>
-            <input type="text" 
-                value={searchParams.nameFirst}
-                placeholder="first name" 
-                onChange={e => setSearchParams({ nameFirst: e.target.value })}/>
-            <input type="text" placeholder="last name"/>
-            <input type="text" placeholder="department"/>
-            <input type="text" placeholder="email"/>
-            <input type="text" placeholder="phone number"/>
-            <input type="text" placeholder="employee id"/>
+            {searchField("first name", "nameFirst")}
+            {searchField("last name", "nameLast")}
+            {searchField("department", "department")}
+            {searchField("email", "email")}
+            {searchField("phone number", "phone")}
+            {searchField("employee id", "employeeID")}
         </div>
     )
 }

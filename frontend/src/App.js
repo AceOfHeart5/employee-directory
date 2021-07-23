@@ -9,10 +9,10 @@ function App() {
 	const [employees, setemployees] = useState([])
 
 	const [searchParams, setSearchParams] = useState({
-		nameFirst:	"test first name",
+		nameFirst:	"",
 		nameLast:	"",
 		department:	"",
-		email:		"email@something.com",
+		email:		"",
 		phone:		"",
 		employeeID:	"",
 	})

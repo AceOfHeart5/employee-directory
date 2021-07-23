@@ -15,8 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/employees', (req, res) => {
-	console.log(req.query)
-	res.send(employeesGet())
+	res.send(employeesGet(req.query))
 })
 
 app.listen(port, () => {
