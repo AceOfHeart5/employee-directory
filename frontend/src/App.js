@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
+import EmployeeList from './components/EmployeeList';
 import './App.css';
 
+const serverUrl = "http://localhost:3001/"
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [employees, setemployees] = useState([])
+
+	const refreshEmployees = async () => {
+		let res = await fetch(serverUrl+'employees')
+		let data = await res.json()
+		console.log('employees refreshed')
+		setemployees(data)
+	}
+
+	useEffect(() => {
+		refreshEmployees()
+			.catch(err => console.log(err))
+	}, [])
+
+	return (
+		<div className="App">
+			<header>Employee Directory</header>
+			<EmployeeList employees={employees}></EmployeeList>
+		</div>
+	);
 }
 
 export default App;
