@@ -14,7 +14,7 @@ const departmentGetRandom = () => {
     return Departments[index]
 }
 
-const NumOfIDDigits = 3
+const NumOfIDDigits = 9
 const employeeIDGetRandom = () => {
     const id = Math.floor(Math.random() * Math.pow(10, NumOfIDDigits))
     let result = id.toString()
