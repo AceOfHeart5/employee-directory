@@ -11,14 +11,14 @@ app.use(express.urlencoded({ extended: false })) // check if necessary
 const port = 3001
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+	res.send('The test server is running!')
 })
 
 app.get('/employees', (req, res) => {
-    console.log('employees grabbed')
-    res.send(employeesGet())
+	console.log(req.query)
+	res.send(employeesGet())
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+	console.log(`Example app listening at http://localhost:${port}`)
 })
