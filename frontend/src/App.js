@@ -62,18 +62,6 @@ function App() {
 		setemployees(data)
 	}
 
-	const addEmployee = async (employee) => {
-		const options = {
-			method:		'POST',
-			headers:	{
-				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-			},
-			body: new URLSearchParams(employee)
-		}
-		await fetch(serverUrl+`add`, options)
-		refreshEmployees('add')
-	}
-
 	useEffect(() => {
 		refreshEmployees()
 			.catch(err => console.log(err))

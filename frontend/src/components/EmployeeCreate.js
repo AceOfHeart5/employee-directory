@@ -21,9 +21,11 @@ function EmployeeCreate({ serverUrl, refreshEmployees }) {
                 'picture':       picUrl
             })
 		}
-		let res = await fetch(serverUrl+`add`, options)
-        res = await res.json()
-        console.log(res)
+		await fetch(serverUrl+`add`, options)
+        setNameFirst('')
+        setNameLast('')
+        setDepartment('')
+        setPicUrl('')
 		refreshEmployees('add')
 	}
 

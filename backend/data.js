@@ -56,20 +56,25 @@ const employeeIDGetRandom = () => {
     return result
 }
 
+const getRandomDigit = () => {
+    return Math.floor(Math.random() * 10).toString()
+}
+
+
 const employeePhoneGet = () => {
     let result = "("
-    result += Math.floor(Math.random() * 10).toString()
-    result += Math.floor(Math.random() * 10).toString()
-    result += Math.floor(Math.random() * 10).toString()
+    result += getRandomDigit()
+    result += getRandomDigit()
+    result += getRandomDigit()
     result += ")-"
-    result += Math.floor(Math.random() * 10).toString()
-    result += Math.floor(Math.random() * 10).toString()
-    result += Math.floor(Math.random() * 10).toString()
+    result += getRandomDigit()
+    result += getRandomDigit()
+    result += getRandomDigit()
     result += "-"
-    result += Math.floor(Math.random() * 10).toString()
-    result += Math.floor(Math.random() * 10).toString()
-    result += Math.floor(Math.random() * 10).toString()
-    result += Math.floor(Math.random() * 10).toString()
+    result += getRandomDigit()
+    result += getRandomDigit()
+    result += getRandomDigit()
+    result += getRandomDigit()
     return result
 }
 

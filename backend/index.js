@@ -7,7 +7,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 app.use(cors())
-app.use(express.urlencoded({ extended: false })) // check if necessary
+app.use(express.urlencoded({ extended: false }))
 const port = 3001
 
 app.get('/', (_, res) => {
@@ -28,9 +28,9 @@ app.delete('/delete', (req, res) => {
 })
 
 app.post('/add', (req, res) => {
-	let result = 'add fail'
+	let result = "add fail"
 	if (employeesAdd(req.body)) {
-		result = 'add success'
+		result = "add success"
 	}
 	console.log(result)
 	res.send(result)
