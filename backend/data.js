@@ -46,7 +46,18 @@ module.exports.employeesGet = (query) => {
     return result
 }
 
+const NumOfIDDigits = 12
+const employeeIDGetRandom = () => {
+    const id = Math.floor(Math.random() * Math.pow(10, NumOfIDDigits))
+    let result = id.toString()
+    while (result.length < NumOfIDDigits) {
+        result = "0" + result
+    }
+    return result
+}
+
 module.exports.employeesAdd = (newEmployee) => {
+    newEmployee.employeeID = employeeIDGetRandom()
     employees.push(newEmployee)
 }
 

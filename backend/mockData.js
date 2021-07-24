@@ -14,16 +14,6 @@ const departmentGetRandom = () => {
     return Departments[index]
 }
 
-const NumOfIDDigits = 9
-const employeeIDGetRandom = () => {
-    const id = Math.floor(Math.random() * Math.pow(10, NumOfIDDigits))
-    let result = id.toString()
-    while (result.length < NumOfIDDigits) {
-        result = "0" + result
-    }
-    return result
-}
-
 const NumOfEmployees = 100
 module.exports.prepareMockData = async () => {
     let res = await fetch(`https://randomuser.me/api/?results=${NumOfEmployees}`)
@@ -36,7 +26,7 @@ module.exports.prepareMockData = async () => {
             email:      e.email,
             phone:      e.phone,
             picture:    e.picture.large,
-            employeeID: employeeIDGetRandom()
+            employeeID: ""
         })
     })
     return true

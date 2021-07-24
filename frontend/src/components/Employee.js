@@ -1,7 +1,19 @@
 import React from 'react'
 
-const Employee = ({ employee, deleteEmployee }) => {
+const Employee = ({ employee, serverUrl, refreshEmployees }) => {
     const fullName = `${employee.nameFirst} ${employee.nameLast}`
+
+    const deleteEmployee = async (employeeID) => {
+		const options = {
+			method:		'DELETE',
+			headers:	{
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			},
+			body: new URLSearchParams({ employeeID:	employeeID })
+		}
+		await fetch(serverUrl+`delete`, options)
+		refreshEmployees('delete')
+	}
 
     return (
         <div className="Employee">

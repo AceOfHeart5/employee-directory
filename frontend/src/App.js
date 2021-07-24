@@ -61,16 +61,16 @@ function App() {
 		setemployees(data)
 	}
 
-	const deleteEmployee = async (employeeID) => {
+	const addEmployee = async (employee) => {
 		const options = {
-			method:		'DELETE',
+			method:		'POST',
 			headers:	{
 				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 			},
-			body: new URLSearchParams({ employeeID:	employeeID })
+			body: new URLSearchParams(employee)
 		}
-		await fetch(serverUrl+`delete`, options)
-		refreshEmployees('delete')
+		await fetch(serverUrl+`add`, options)
+		refreshEmployees('add')
 	}
 
 	useEffect(() => {
@@ -92,7 +92,8 @@ function App() {
 			</Search>
 			<EmployeeList 
 				employees={employees} 
-				deleteEmployee={deleteEmployee}>
+				serverUrl={serverUrl}
+				refreshEmployees={refreshEmployees}>
 			</EmployeeList>
 		</div>
 	);

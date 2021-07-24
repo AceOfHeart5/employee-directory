@@ -10,7 +10,7 @@ app.use(cors())
 app.use(express.urlencoded({ extended: false })) // check if necessary
 const port = 3001
 
-app.get('/', (req, res) => {
+app.get('/', (_, res) => {
 	res.send('The test server is running!')
 })
 
@@ -23,6 +23,11 @@ app.delete('/delete', (req, res) => {
 	if (employeeDelete(req.body.employeeID)) {
 		result = 'delete success'
 	}
+	res.send(result)
+})
+
+app.post('/add', (req, res) => {
+	let result = 'add fail'
 	res.send(result)
 })
 

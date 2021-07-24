@@ -1,7 +1,7 @@
 import React from 'react'
 import Employee from './Employee'
 
-function EmployeeList({ employees, deleteEmployee }) {
+function EmployeeList({ employees, serverUrl, refreshEmployees }) {
 
     const listMake = () => {
         return (
@@ -9,7 +9,8 @@ function EmployeeList({ employees, deleteEmployee }) {
                 employees.map(e => {
                     return <Employee 
                             employee={e} 
-                            deleteEmployee={deleteEmployee} 
+                            serverUrl={serverUrl}
+                            refreshEmployees={refreshEmployees}
                             key={e.employeeID}>    
                         </Employee>
                 })
