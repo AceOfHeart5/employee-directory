@@ -56,9 +56,47 @@ const employeeIDGetRandom = () => {
     return result
 }
 
+const employeePhoneGet = () => {
+    let result = "("
+    result += Math.floor(Math.random() * 10).toString()
+    result += Math.floor(Math.random() * 10).toString()
+    result += Math.floor(Math.random() * 10).toString()
+    result += ")-"
+    result += Math.floor(Math.random() * 10).toString()
+    result += Math.floor(Math.random() * 10).toString()
+    result += Math.floor(Math.random() * 10).toString()
+    result += "-"
+    result += Math.floor(Math.random() * 10).toString()
+    result += Math.floor(Math.random() * 10).toString()
+    result += Math.floor(Math.random() * 10).toString()
+    result += Math.floor(Math.random() * 10).toString()
+    return result
+}
+
+const employeeEmailGet = (employee) => {
+    return `${employee.nameFirst}.${employee.nameLast}@company.com`
+}
+
 module.exports.employeesAdd = (newEmployee) => {
+    if (!newEmployee.nameFirst) {
+        return false
+    }
+    if (!newEmployee.nameLast) {
+        return false
+    }
+    if (!newEmployee.department) {
+        return false
+    }
+
     newEmployee.employeeID = employeeIDGetRandom()
+    newEmployee.phone = employeePhoneGet()
+
+    if (!newEmployee.email) {
+        newEmployee.email = employeeEmailGet(newEmployee)
+    }
+
     employees.push(newEmployee)
+    return true
 }
 
 module.exports.employeeDelete = (employeeID) => {

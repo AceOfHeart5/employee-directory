@@ -1,4 +1,4 @@
-const { employeesGet, employeeDelete } = require('./data')
+const { employeesGet, employeeDelete, employeesAdd } = require('./data')
 
 const { prepareMockData } = require('./mockData')
 prepareMockData()
@@ -23,12 +23,16 @@ app.delete('/delete', (req, res) => {
 	if (employeeDelete(req.body.employeeID)) {
 		result = 'delete success'
 	}
+	console.log(result)
 	res.send(result)
 })
 
 app.post('/add', (req, res) => {
-	let result = 'add not implemented'
-	console.log('add requested')
+	let result = 'add fail'
+	if (employeesAdd(req.body)) {
+		result = 'add success'
+	}
+	console.log(result)
 	res.send(result)
 })
 

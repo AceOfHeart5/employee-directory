@@ -14,7 +14,12 @@ function EmployeeCreate({ serverUrl, refreshEmployees }) {
 			headers:	{
 				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 			},
-			body: new URLSearchParams({ 'data': "I'm the data!" })
+			body: new URLSearchParams({ 
+                'nameFirst':    nameFirst,
+                'nameLast':     nameLast,
+                'department':   department,
+                'picture':       picUrl
+            })
 		}
 		let res = await fetch(serverUrl+`add`, options)
         res = await res.json()
