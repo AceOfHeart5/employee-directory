@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import EmployeeCreate from './components/EmployeeCreate';
 import Search from './components/Search';
 import EmployeeList from './components/EmployeeList';
 import './App.css';
@@ -86,6 +87,10 @@ function App() {
 	return (
 		<div className="App">
 			<h1>Employee Directory</h1>
+			<EmployeeCreate
+				serverUrl={serverUrl}
+				refreshEmployees={refreshEmployees}>
+			</EmployeeCreate>
 			<Search 
 				searchParams={searchParams} 
 				setSearchParams={setSearchParams}>

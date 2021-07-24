@@ -27,7 +27,8 @@ app.delete('/delete', (req, res) => {
 })
 
 app.post('/add', (req, res) => {
-	let result = 'add fail'
+	let result = 'add not implemented'
+	console.log('add requested')
 	res.send(result)
 })
 
