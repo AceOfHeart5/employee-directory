@@ -1,13 +1,17 @@
 import React from 'react'
 import Employee from './Employee'
 
-function EmployeeList({ employees }) {
+function EmployeeList({ employees, deleteEmployee }) {
 
     const listMake = () => {
         return (
             <ul>{
                 employees.map(e => {
-                    return <Employee employee={e} key={e.id}></Employee>
+                    return <Employee 
+                            employee={e} 
+                            deleteEmployee={deleteEmployee} 
+                            key={e.employeeID}>    
+                        </Employee>
                 })
             }</ul>
         )

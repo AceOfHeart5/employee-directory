@@ -1,5 +1,5 @@
 const fetch = require('node-fetch')
-const { employeesAdd } = require('./data')
+const { employeesAdd, employeesSort } = require('./data')
 
 const Departments = [
     "Human Resources", 

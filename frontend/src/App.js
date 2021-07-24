@@ -51,11 +51,26 @@ function App() {
 		return result
 	}
 
-	const refreshEmployees = async () => {
+	const refreshEmployees = async (msg) => {
 		let res = await fetch(serverUrl+`employees${searchParamsToString()}`)
 		let data = await res.json()
-		console.log('employees refreshed')
+		
+		if (msg) {
+			console.log('refresh from: ' + msg)
+		}
 		setemployees(data)
+	}
+
+	const deleteEmployee = async (employeeID) => {
+		const options = {
+			method:		'DELETE',
+			headers:	{
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			},
+			body: new URLSearchParams({ employeeID:	employeeID })
+		}
+		let res = await fetch(serverUrl+`delete`, options)
+		await refreshEmployees('delete')
 	}
 
 	useEffect(() => {
@@ -64,15 +79,21 @@ function App() {
 	}, [])
 
 	useEffect(() => {
-		refreshEmployees()
+		refreshEmployees('search params changed')
 			.catch(err => console.log(err))
 	}, [searchParams])
 
 	return (
 		<div className="App">
 			<h1>Employee Directory</h1>
-			<Search searchParams={searchParams} setSearchParams={setSearchParams}></Search>
-			<EmployeeList employees={employees}></EmployeeList>
+			<Search 
+				searchParams={searchParams} 
+				setSearchParams={setSearchParams}>
+			</Search>
+			<EmployeeList 
+				employees={employees} 
+				deleteEmployee={deleteEmployee}>
+			</EmployeeList>
 		</div>
 	);
 }

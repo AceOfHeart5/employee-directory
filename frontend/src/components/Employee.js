@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Employee = ({ employee }) => {
+const Employee = ({ employee, deleteEmployee }) => {
     const fullName = `${employee.nameFirst} ${employee.nameLast}`
 
     return (
@@ -11,6 +11,7 @@ const Employee = ({ employee }) => {
             <div>{`Email: ${employee.email}`}</div>
             <div>{`Phone: ${employee.phone}`}</div>
             <div>{`Employee ID: ${employee.employeeID}`}</div>
+            <button onClick={() => deleteEmployee(employee.employeeID)}>Delete</button>
         </div>
     )
 }

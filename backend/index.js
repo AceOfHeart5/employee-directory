@@ -18,6 +18,11 @@ app.get('/employees', (req, res) => {
 	res.send(employeesGet(req.query))
 })
 
+app.delete('/delete', (req, res) => {
+	console.log(req.body)
+	res.send("delete not implemented")
+})
+
 app.listen(port, () => {
 	console.log(`Example app listening at http://localhost:${port}`)
 })
