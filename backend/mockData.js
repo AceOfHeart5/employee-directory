@@ -26,7 +26,6 @@ const employeeIDGetRandom = () => {
 
 const NumOfEmployees = 100
 module.exports.prepareMockData = async () => {
-    const employees = []
     let res = await fetch(`https://randomuser.me/api/?results=${NumOfEmployees}`)
     let data = await res.json()
     data.results.forEach(e => {
@@ -37,7 +36,7 @@ module.exports.prepareMockData = async () => {
             email:      e.email,
             phone:      e.phone,
             picture:    e.picture.large,
-            id:         employeeIDGetRandom()
+            employeeID: employeeIDGetRandom()
         })
     })
     return true

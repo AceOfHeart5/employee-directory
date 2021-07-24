@@ -4,40 +4,46 @@ module.exports.employeesAdd = (newEmployee) => {
     employees.push(newEmployee)
 }
 
-/*
-    nameFirst:  e.name.first,
-    nameLast:   e.name.last,
-    department: departmentGetRandom(),
-    email:      e.email,
-    phone:      e.phone,
-    picture:    e.picture.large,
-    id:         employeeIDGetRandom()
-*/
+const employeeIncludesQueryField = (employee, query, field) => {
+    let qf = query[field.toLowerCase()]
+    let result = false
+    if (qf === undefined) {
+        result = true
+    }
+    if (qf && employee[field].toLowerCase().includes(qf)) {
+        result = true
+    }
+    return result
+}
+
+const employeeIncludesQuery = (employee, query) => {
+    let result = true
+    if (!employeeIncludesQueryField(employee, query, "nameFirst")) {
+        result = false
+    }
+    if (!employeeIncludesQueryField(employee, query, "nameLast")) {
+        result = false
+    }
+    if (!employeeIncludesQueryField(employee, query, "department")) {
+        result = false
+    }
+    if (!employeeIncludesQueryField(employee, query, "email")) {
+        result = false
+    }
+    if (!employeeIncludesQueryField(employee, query, "phone")) {
+        result = false
+    }
+    if (!employeeIncludesQueryField(employee, query, "employeeID")) {
+        result = false
+    }
+    return result
+}
+
 
 module.exports.employeesGet = (query) => {
-    console.log(query)
     const result = []
     employees.forEach(e => {
-        let include = true
-        if (query.namefirst && !e.nameFirst.includes(query.namefirst)) {
-            include = false
-        }
-        if (query.namelast && !e.nameLast.includes(query.namelast)) {
-            include = false
-        }
-        if (query.department && !e.department.includes(query.department)) {
-            include = false
-        }
-        if (query.email && !e.email.includes(query.email)) {
-            include = false
-        }
-        if (query.phone && !e.phone.includes(query.phone)) {
-            include = false
-        }
-        if (query.employeeid && !e.id.includes(query.employeeid)) {
-            include = false
-        }
-        if (include) {
+        if (employeeIncludesQuery(e, query)) {
             result.push(e)
         }
     })

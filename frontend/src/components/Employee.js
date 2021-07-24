@@ -10,7 +10,7 @@ const Employee = ({ employee }) => {
             <div>{`Department: ${employee.department}`}</div>
             <div>{`Email: ${employee.email}`}</div>
             <div>{`Phone: ${employee.phone}`}</div>
-            <div>{`Employee ID: ${employee.id}`}</div>
+            <div>{`Employee ID: ${employee.employeeID}`}</div>
         </div>
     )
 }
