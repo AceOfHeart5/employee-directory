@@ -69,8 +69,8 @@ function App() {
 			},
 			body: new URLSearchParams({ employeeID:	employeeID })
 		}
-		let res = await fetch(serverUrl+`delete`, options)
-		await refreshEmployees('delete')
+		await fetch(serverUrl+`delete`, options)
+		refreshEmployees('delete')
 	}
 
 	useEffect(() => {

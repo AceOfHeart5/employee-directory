@@ -1,9 +1,5 @@
 const employees = []
 
-module.exports.employeesAdd = (newEmployee) => {
-    employees.push(newEmployee)
-}
-
 const employeeIncludesQueryField = (employee, query, field) => {
     let qf = query[field.toLowerCase()]
     let result = false
@@ -39,7 +35,6 @@ const employeeIncludesQuery = (employee, query) => {
     return result
 }
 
-
 module.exports.employeesGet = (query) => {
     const result = []
     employees.forEach(e => {
@@ -48,5 +43,21 @@ module.exports.employeesGet = (query) => {
         }
     })
 
+    return result
+}
+
+module.exports.employeesAdd = (newEmployee) => {
+    employees.push(newEmployee)
+}
+
+module.exports.employeeDelete = (employeeID) => {
+    let result = false
+    for (let i = 0; i < employees.length; i++) {
+        if (employees[i].employeeID === employeeID) {
+            employees.splice(i, 1)
+            i = employees.length
+            result = true
+        }
+    }
     return result
 }

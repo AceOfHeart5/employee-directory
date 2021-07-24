@@ -1,4 +1,4 @@
-const { employeesGet } = require('./data')
+const { employeesGet, employeeDelete } = require('./data')
 
 const { prepareMockData } = require('./mockData')
 prepareMockData()
@@ -19,8 +19,11 @@ app.get('/employees', (req, res) => {
 })
 
 app.delete('/delete', (req, res) => {
-	console.log(req.body)
-	res.send("delete not implemented")
+	let result = 'delete fail'
+	if (employeeDelete(req.body.employeeID)) {
+		result = 'delete success'
+	}
+	res.send(result)
 })
 
 app.listen(port, () => {
